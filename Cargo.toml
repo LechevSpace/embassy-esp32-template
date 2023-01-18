@@ -1,0 +1,39 @@
+[package]
+name = "embassy-esp32"
+version = "0.1.0"
+authors = ["Lachezar Lechev <elpiel93@gmail.com>"]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+esp32c3-hal = {version = "0.4.0", git = "https://github.com/esp-rs/esp-hal", rev = "1f68037", features = ["rt", "embassy", "eh1", "embassy-time-systick"] }
+esp-alloc = { version = "0.1.0", features = ["oom-handler"] }
+esp-backtrace = { version = "0.4.0", features = ["esp32c3", "panic-handler", "print-uart"] }
+esp-println = { version = "0.3.1", features = ["esp32c3"] }
+esp-hal-common = { version = "0.4.0", features = ["esp32c3", "embassy", "eh1", "vectored"] }
+riscv-rt = { version = "0.10" }
+
+embassy-executor  = { package = "embassy-executor", git = "https://github.com/embassy-rs/embassy/", rev = "eed34f9", features = ["nightly", "integrated-timers"] }
+
+embassy-time       = { version = "0.1.0", features = ["nightly"] }
+embedded-hal       = { version = "0.2.7", features = ["unproven"] }
+embedded-hal-1     = { version = "=1.0.0-alpha.9", package = "embedded-hal" }
+embedded-hal-async = { version = "0.1.0-alpha.3" }
+embedded-hal-nb    = { version = "=1.0.0-alpha.1" }
+embedded-can       = { version = "0.4.1" }
+
+static_cell = "1.0"
+
+[features]
+# "feature `embassy-time-systick` includes `esp32c3-hal:embassy-time-systick` which is neither a dependency nor another feature"
+default = ["embassy-time-systick"]
+embassy-time-systick = ["esp-hal-common/embassy-time-systick", "embassy-time/tick-hz-16_000_000"]
+# embassy-time-timg0 = ["esp-hal-common/embassy-time-timg0", "esp32c3-hal:embassy-time-timg0", "embassy-time/tick-hz-1_000_000"]
+
+# embassy-time-systick = ["esp-hal-common/embassy-time-systick", "embassy-time/tick-hz-16_000_000"]
+# embassy-time-timg0 = ["esp-hal-common/embassy-time-timg0", "embassy-time/tick-hz-1_000_000"]
+# embassy-time-systick = ["embassy-time/tick-hz-16_000_000"]
+# embassy-time-timg0 = ["embassy-time/tick-hz-1_000_000"]
+
+[patch.crates-io]
+# esp32c3-hal = { version = "0.4.0", git = "https://github.com/esp-rs/esp-hal", rev = "1f68037" }
