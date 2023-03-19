@@ -20,4 +20,4 @@ esac
 
 export ESP_ARCH=riscv32imac-unknown-none-elf
 
-web-flash --chip esp32c3 target/${ESP_ARCH}/${BUILD_MODE}/olimex_esp32_c3
+web-flash --chip esp32c3 target/${ESP_ARCH}/${BUILD_MODE}/embassy_esp32_template

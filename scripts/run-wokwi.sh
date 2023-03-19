@@ -31,7 +31,7 @@ export ESP_ARCH=riscv32imac-unknown-none-elf
 # TODO: Update with your Wokwi Project
 export WOKWI_PROJECT_ID=""
 if [ "${WOKWI_PROJECT_ID}" == "" ]; then
-    wokwi-server --chip esp32c3 target/${ESP_ARCH}/${BUILD_MODE}/olimex_esp32_c3
+    wokwi-server --chip esp32c3 target/${ESP_ARCH}/${BUILD_MODE}/embassy_esp32_template
 else
-    wokwi-server --chip esp32c3 --id ${WOKWI_PROJECT_ID} target/${ESP_ARCH}/${BUILD_MODE}/olimex_esp32_c3
+    wokwi-server --chip esp32c3 --id ${WOKWI_PROJECT_ID} target/${ESP_ARCH}/${BUILD_MODE}/embassy_esp32_template
 fi
