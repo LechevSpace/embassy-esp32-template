@@ -1,7 +1,7 @@
 {
-  "name": "olimex_esp32_c3",
-  // Select between image and build propieties to pull or build the image.
-  // "image": "docker.io/espressif/idf-rust:esp32c3_1.64.0.0",
+  "name": "embassy_esp32_template",
+  // Select between image and build properties to pull or build the image.
+  // "image": "docker.io/espressif/idf-rust:esp32c3_1.67.0.0",
   "build": {
     "dockerfile": "Dockerfile",
     "args": {
@@ -39,6 +39,6 @@
     9333,
     8000
   ],
-  "workspaceMount": "source=${localWorkspaceFolder},target=/home/esp/olimex_esp32_c3,type=bind,consistency=cached",
-  "workspaceFolder": "/home/esp/olimex_esp32_c3"
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/esp/embassy_esp32_template,type=bind,consistency=cached",
+  "workspaceFolder": "/home/esp/embassy_esp32_template"
 }
