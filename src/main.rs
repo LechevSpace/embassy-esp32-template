@@ -4,7 +4,10 @@
 
 use embassy_executor::Executor;
 use embassy_time::{Duration, Timer};
-use esp32c3_hal::{
+
+use esp_backtrace as _;
+
+use hal::{
     clock::ClockControl,
     embassy,
     gpio::{Gpio8, Output, PushPull},
@@ -13,12 +16,12 @@ use esp32c3_hal::{
     timer::TimerGroup,
     Rtc, IO,
 };
-use esp_backtrace as _;
+
 use static_cell::StaticCell;
 
 static EXECUTOR: StaticCell<Executor> = StaticCell::new();
 
-#[riscv_rt::entry]
+#[hal::entry]
 fn main() -> ! {
     esp_println::println!("Init!");
     let peripherals = Peripherals::take();
@@ -40,7 +43,7 @@ fn main() -> ! {
     #[cfg(feature = "embassy-time-systick")]
     embassy::init(
         &clocks,
-        esp32c3_hal::systimer::SystemTimer::new(peripherals.SYSTIMER),
+        hal::systimer::SystemTimer::new(peripherals.SYSTIMER),
     );
 
     #[cfg(feature = "embassy-time-timg0")]
